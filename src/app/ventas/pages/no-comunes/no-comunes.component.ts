@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { interval } from 'rxjs';
+import { Observable, interval, tap } from 'rxjs';
 
 @Component({
   selector: 'app-no-comunes',
@@ -40,7 +40,17 @@ export class NoComunesComponent {
     hobbies: 'fotografia aves'
   }
 
-  public myObservableTimer  = interval(2000)
-  // .pipe(tap( value => console.log('tap;', value)))
-  ;
+  
+  // Async Pipe
+  public myObservableTimer: Observable<number> = interval(2000).pipe(
+    tap( value => console.log('tap:', value ) ),
+  );
+
+  public promiseValue: Promise<string> = new Promise( (resolve, reject) => {
+    setTimeout(() => {
+      resolve( 'Tenemos data en la promesa.' );
+      console.log( 'Tenemos data en la promesa.' );
+      this.person.name = 'Otro nombre'
+    }, 3500);
+  })
 }
