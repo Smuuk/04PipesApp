@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-ordenar',
+  selector: 'productos-ordenar',
   templateUrl: './ordenar.component.html',
   styles: [
   ]
